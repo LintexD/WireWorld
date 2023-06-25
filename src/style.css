@@ -13,9 +13,6 @@
     --greyl: #BCBCBE;
 }
 
-body {
-    background: url("./images/background.png") left top repeat;
-}
 #main {
     display: flex;
     flex: 1;

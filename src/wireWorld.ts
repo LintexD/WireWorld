@@ -1,7 +1,7 @@
-function createNArr(n = 0, x = 20, y = 20): number[][] {
+export function createNArr(n = 0, x = 20, y = 20): number[][] {
     return Array.from({ length: x }).map(e => e = Array.from({ length: y }).map(ee => ee = n))
 }
-function arrFromString(str: string): number[][] {
+export function arrFromString(str: string): number[][] {
     str = str.trim()
     const strs = str.split(`\n`)
     const x = strs.length
@@ -15,12 +15,22 @@ function arrFromString(str: string): number[][] {
     return arr
 }
 
-function strFromArray(arr: number[][]): string {
+export function strFromArray(arr: number[][]): string {
     let str = ''
     for (let i = 0; i < arr.length; i++) {
-        str = str.concat(arr[i].join(' ')) + '\n'
+        str = str.concat(arr[i].join('')) + '\n'
     }
     return str
+}
+
+/**maps arr onto brr and returns it*/
+export function mapArray(arr: number[][], brr:number[][]) {
+    for (let i = 0; i < arr.length && i < brr.length; i++) {
+        for (let j = 0; j < arr[i].length && j < brr[i].length; j++) {
+            brr[i][j] = arr[i][j]
+        }
+    }
+    return brr
 }
 
 //0: wall; 1: will be 2; 2:will be 3; 3:will be 1 if 1|2 1 around else stays the same
@@ -44,10 +54,10 @@ function nextNum(x: number, y: number, arr: number[][]): number {
     return num
 }
 
-function update(arr: number[][], barr?: number[][]): number[][] {
+export function update(arr: number[][], barr?: number[][]): number[][] {
     barr = barr ?? createNArr(0, arr.length, arr[0].length)
     for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[0].length; j++) {
+        for (let j = 0; j < arr[i].length; j++) {
             let next = nextNum(i, j, arr)
             barr[i][j] = next
         }
