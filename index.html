@@ -1,2 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 
+<title>Luftegom TV</title>
+<link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+
+<meta charset="UTF-8">
+<meta name="description" content="A BloonsTD clone powered by HTML, CSS and Typescript">
+<meta name="author" content="LintexD, PsychotriaVridis">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="./src/style.css">
+
+
+
+<body class="scaleWrapper">
+    <header>
+        <div class="blze">
+            <button id="money" class="emeraldButton">Money: 100$</button>
+            <button id="health" class="emeraldButton">Health: 100</button>
+            <button id="settings" class="emeraldButton">Settings</button>
+        </div>
+        <ul>
+            <li><div>MONKE</div></li>
+            <li><div class = "barbtn" id="bspawn">Spawn Bloon</div></li>
+            <li class="dropdown" style="width: 150px;">
+                <div class="dropbtn">UPGRADES</div>
+                <div class="dropdown-content">
+                    <button id="p1">Path 1
+                        <div id="p1Text" class="dropside-content">
+                            Upgrade 1XX<br>
+                            Price: $-INFINITY<br>
+                            Here you can read what the update does.<br>
+                        </div>
+                    </button>
+                    <button id="p2">Path 2
+                        <div id="p1Text" class="dropside-content">
+                            Upgrade X1X<br>
+                            Price: $-INFINITY<br>
+                            Here you can read what the update would do.<br>
+                        </div>
+                    </button>
+                    <button id="p3">Path 3
+                        <div id="p1Text" class="dropside-content">
+                            Upgrade XX1<br>
+                            Price: $-INFINITY<br>
+                            Here you can't read what the update does.<br>
+                        </div>
+                    </button>
+                </div>
+            </li>
+            <li style="float:right"><div>4</div></li>
+        </ul>
+    </header>
+
+    <div id="main">
+        <article id="canvas">
+            <canvas id="canvas-background" style= "z-index: -2;"></canvas>
+            <canvas id="canvas-main" style= "z-index: -1;"></canvas>
+            <canvas id="canvas-gui" style= "z-index: 0;"></canvas>
+        </article>
+        <aside>
+            <div>
+                <label for="monkey">Tower</label>
+                <select id="monkey">
+                    <option value="nullMonkey"></option>
+                    <option value="dartMonkey">Dart monkey[100$]</option>
+                </select>
+            </div>
+            <div>
+                <label for="bloon">Bloon</label>
+                <select id="bloon">
+                    <option value="nullBloon"> </option>
+                    <option value="redBloon">Red bloon - 1$</option>
+                </select>
+            </div>
+            <br>
+            <button id="varA" class="varButton">G:<span id="varAVal">10000000</span></button>
+            <button id="varB" class="varButton">s</button>
+            <button id="varC" class="varButton"></button>
+            <button id="varD" class="varButton"></button>
+            <button id="varE" class="varButton"></button>
+            <button id="varF" class="varButton"></button>
+            <button id="varG" class="varButton"></button>
+            <button id="varH" class="varButton"></button>
+            <button id="varI" class="varButton"></button>
+            <button id="varJ" class="varButton"></button>
+            <button id="varK" class="varButton"></button>
+            <button id="varL" class="varButton"></button>
+            <!--<button id="varM" class="varButton">varM</button>-->
+        </aside>
+    </div>
+
+    <!--footer style="border: 1px solid black">
+        <button id="addMoney" class="emeraldButton">Add money</button>
+        <button id="addHealth" class="emeraldButton">Add health</button>
+        <button id="delete" class="emeraldButton">Delete</button>
+        <button id="restart" class="emeraldButton">Restart</button>
+        <button id="start" class="emeraldButton">Start</button>
+    </footer-->
+</body>
+
+<script type="module" src="./src/main.ts"></script>
+
+</html>
