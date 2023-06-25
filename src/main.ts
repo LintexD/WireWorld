@@ -15,17 +15,24 @@ let scaleIdx = 1
 let state = 3
 let arr = createNArr(0, cHeight / scale[scaleIdx], cWidth / scale[scaleIdx])
 let barr = createNArr(0, cHeight / scale[scaleIdx], cWidth / scale[scaleIdx])
+let timeoutID: number
 
 const stepper = document.querySelector('#step') as HTMLButtonElement
 const starter = document.querySelector('#starter') as HTMLButtonElement
 const speeder = document.querySelector('#speed') as HTMLButtonElement
 const sizer = document.querySelector('#size') as HTMLDivElement
 const reset = document.querySelector('#reset') as HTMLDivElement
+const filler = document.querySelector('#fill') as HTMLDivElement
 const canvas = document.querySelector('#cv') as HTMLCanvasElement
 const body = document.querySelector('body') as HTMLBodyElement
 canvas.setAttribute('width', `${cWidth}`)
 canvas.setAttribute('height', `${cHeight}`)
 const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
+const sel = document.getElementById('sel') as HTMLButtonElement
+const s0 = document.getElementById('s0') as HTMLButtonElement
+const s1 = document.getElementById('s1') as HTMLButtonElement
+const s2 = document.getElementById('s2') as HTMLButtonElement
+const s3 = document.getElementById('s3') as HTMLButtonElement
 
 let pendingUpdate = false;
 let scaleFactor = 1
@@ -53,6 +60,7 @@ window.visualViewport?.addEventListener('resize', viewportHandler)
 
 stepper.addEventListener('click', () => { if (!running) anum() })
 function toggleStart() {
+  clearTimeout(timeoutID)
   running = !running
   if (running) {
     starter.innerHTML = 'Stop'
@@ -71,15 +79,18 @@ sizer.addEventListener('click', () => {
   draw(ctx, cWidth, cHeight, arr)
 })
 reset.addEventListener('click', () => {
+  clearTimeout(timeoutID)
   scaleIdx = 1
   arr = createNArr(0, cHeight / scale[scaleIdx], cWidth / scale[scaleIdx])
   barr = createNArr(0, cHeight / scale[scaleIdx], cWidth / scale[scaleIdx])
   draw(ctx, cWidth, cHeight, arr)
 })
+function fillAll() {arr = createNArr(state, arr.length, arr[0].length); draw(ctx, cWidth, cHeight, arr)}
+filler.addEventListener('click', fillAll)
 function paintEvent(ev) {
   const posX = Math.floor(ev.pageX / scaleFactor / scale[scaleIdx])
   const posY = Math.floor((ev.pageY / scaleFactor - 105) / scale[scaleIdx])
-  console.log('pos: ', posX, ' ', posY)
+  //console.log('pos: ', posX, ' ', posY)
   paintArr(posY, posX)
 }
 canvas.addEventListener('mousedown', (ev) => {
@@ -88,14 +99,19 @@ canvas.addEventListener('mousemove', paintEvent)
 })
 canvas.addEventListener('mouseup', () => {canvas.removeEventListener('mousemove', paintEvent)})
 canvas.addEventListener('mouseleave', () => {canvas.removeEventListener('mousemove', paintEvent)})
+s0.addEventListener('click', () => {state = 0; sel.style.backgroundColor = '#fff'; sel.innerText = '0'})
+s1.addEventListener('click', () => {state = 1; sel.style.backgroundColor = '#00539C'; sel.innerText = '1'})
+s2.addEventListener('click', () => {state = 2; sel.style.backgroundColor = '#6F9FD8'; sel.innerText = '2'})
+s3.addEventListener('click', () => {state = 3; sel.style.backgroundColor = '#DD4124'; sel.innerText = '3'})
 window.addEventListener('keydown', (ev) => {
   const keyCode = ev.code
-  if (keyCode === "Digit0" || keyCode === "KeyQ") state = 0
-  else if (keyCode === "Digit1") state = 1
-  else if (keyCode === "Digit2") state = 2
-  else if (keyCode === "Digit3") state = 3
+  if (keyCode === "Digit0" || keyCode === "KeyQ") {state = 0; sel.style.backgroundColor = '#fff'; sel.innerText = '0'}
+  else if (keyCode === "Digit1") {state = 1; sel.style.backgroundColor = '#00539C'; sel.innerText = '1'}
+  else if (keyCode === "Digit2") {state = 2; sel.style.backgroundColor = '#6F9FD8'; sel.innerText = '2'}
+  else if (keyCode === "Digit3") {state = 3; sel.style.backgroundColor = '#DD4124'; sel.innerText = '3'}
   else if (keyCode === "Space") toggleStart()
-  else if (keyCode === "KeyS") if (!running) anum()
+  else if (keyCode === "KeyS") {if (!running) anum()}
+  else if (keyCode === "KeyF") fillAll()
 })
 
 function paintArr(x: number, y: number) {
@@ -106,15 +122,11 @@ function paintArr(x: number, y: number) {
 
 function anum() {
   if (running) {
-    setTimeout(anum, speed[speedIdx])
+    timeoutID = setTimeout(anum, speed[speedIdx])
   }
   const tmp = arr
   arr = update(arr, barr)
   barr = tmp
   draw(ctx, cWidth, cHeight, arr)
 }
-arr[0][0] = 3
-arr[0][4] = 2
-arr[4][4] = 1
-
 draw(ctx, cWidth, cHeight, arr)

@@ -6,13 +6,13 @@ export function draw(ctx: CanvasRenderingContext2D, cW: number, cH: number, arr:
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr[i].length; j++) {
             if (arr[i][j] === 1) {
-                ctx.fillStyle = '#2031F3'
+                ctx.fillStyle = '#00539C'
                 ctx.fillRect(xS * j, yS * i, xS, yS)
             } else if (arr[i][j] === 2) {
-                ctx.fillStyle = '#5289FF'
+                ctx.fillStyle = '#6F9FD8'
                 ctx.fillRect(xS * j, yS * i, xS, yS)
             } else if (arr[i][j] === 3) {
-                ctx.fillStyle = '#FF4003'
+                ctx.fillStyle = '#DD4124'
                 ctx.fillRect(xS * j, yS * i, xS, yS)
             }
         }
@@ -24,7 +24,7 @@ function drawGrid(ctx: CanvasRenderingContext2D, cW: number, cH: number, col: nu
     const xS = cH / row
     const yS = cW / col
     ctx.lineWidth = 2
-    ctx.strokeStyle = 'green'
+    ctx.strokeStyle = '#00A170'
     ctx.beginPath()
 
     for (let i = 0; i <= row; i++) {

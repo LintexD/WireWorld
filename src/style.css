@@ -1,46 +1,50 @@
 * {
-    padding: 0;
-    margin: 0;
-    font-family: Arial;
-	text-decoration:none;
+  padding: 0;
+  margin: 0;
+  font-family: Arial;
+  text-decoration: none;
 }
 
 :root {
-    --accent: #03875b;
-    --accentl: #00A170;
-    --greyd: #363945;
-    --gray: #939597;
-    --greyl: #BCBCBE;
+  --accent: #03875b;
+  --accentl: #00A170;
+  --greyd: #363945;
+  --gray: #939597;
+  --greyl: #BCBCBE;
 }
 
 #main {
-    display: flex;
-    flex: 1;
+  display: flex;
+  flex: 1;
 }
 
 #canvas {
-    width: 1560px;
-    height: 975px;
-    position: relative;
+  width: 1560px;
+  height: 975px;
+  position: relative;
 }
 
 canvas {
-    position: absolute;
-    width: 1560px;
-    height: 975px;
+  position: absolute;
+  width: 1560px;
+  height: 975px;
 }
 
 #main>aside {
-    width: 360px;
-    height: 975px;
-    background: var(--greyl);
+  width: 360px;
+  height: 975px;
+  background: var(--greyl);
+}
+
+#main>aside * {
+  margin: 8px;
 }
 
 header {
-    text-align: right;
-    height: 105px;
-    width: 1920px;
-    background: var(--greyd);
+  text-align: right;
+  height: 105px;
+  width: 1920px;
+  background: var(--greyd);
 }
 
 ul {
@@ -57,7 +61,8 @@ li {
   user-select: none;
 }
 
-li *, .dropbtn {
+li *,
+.dropbtn {
   display: block;
   color: white;
   text-align: center;
@@ -74,161 +79,169 @@ li *, .dropbtn {
 }
 
 .barbtn:hover {
-    background-color: var(--accentl);
+  background-color: var(--accentl);
 }
 
 li div.dropbtn:hover,
 .dropdown:hover .dropbtn,
-.barbtn:active{
-    background-color: var(--accent);
+.barbtn:active {
+  background-color: var(--accent);
 }
 
 li.dropdown {
-    display: inline-block;
+  display: inline-block;
 }
-  
+
 .dropdown-content {
-    border: none;
-    display: none;
-    position: absolute;
-    top: 105px;
-    background: var(--greyl);
-    width: 150px;
-    z-index: 1;
-    padding: 0;
+  border: none;
+  display: none;
+  position: absolute;
+  top: 105px;
+  background: var(--greyl);
+  width: 150px;
+  z-index: 1;
+  padding: 0;
 }
 
 .dropside-content {
-    border: none;
-    display: none;
-    position: absolute;
-    cursor: default;
-    top: -48px;
-    left: 150px;
-    background: var(--accentl);
-    width: 300px;
-    height: 158px;
-    z-index: 1;
-    padding: 14px, 16px;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: left;
+  border: none;
+  display: none;
+  position: absolute;
+  cursor: default;
+  top: -48px;
+  left: 150px;
+  background: var(--accentl);
+  width: 300px;
+  height: 158px;
+  z-index: 1;
+  padding: 14px, 16px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
 }
-  
+
 .dropdown-content button {
-    border: none;
-    background: var(--greyl);
-	color: var(--greyd);
-    cursor: pointer;
-    padding: 12px 16px;
-    width: 150px;
-    display: block;
-    text-align: left;
-    border: none;
+  border: none;
+  background: var(--greyl);
+  color: var(--greyd);
+  cursor: pointer;
+  padding: 12px 16px;
+  width: 150px;
+  display: block;
+  text-align: left;
+  border: none;
 }
-  
-.dropdown-content button:hover {background-color: #f1f1f1;}
+
+.dropdown-content button:hover {
+  background-color: #f1f1f1;
+}
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
-.dropdown-content button:hover .dropside-content{
-    display: block;
+.dropdown-content button:hover .dropside-content {
+  display: block;
 }
 
 .scaleWrapper {
-    scale: 1;
-    position: fixed;
-    top: 0;
-    left: 0;
+  scale: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .blze {
-    padding: 9px;
+  padding: 9px;
 }
 
 .emeraldButton {
-    width: 180px;
-    height: 39px;
-    background-color: var(--accentl);
-    border: 1px solid black;
-    display: inline-block;
-    cursor: pointer;
-    color: white;
-    font-size: 19px;
-    font-weight: bold;
+  width: 180px;
+  height: 39px;
+  background-color: var(--accentl);
+  border: 1px solid black;
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+  font-size: 19px;
+  font-weight: bold;
 }
 
 .emeraldButton:hover {
-    background-color: var(--accent);
+  background-color: var(--accent);
 }
 
 .emeraldButton:active {
-    position: relative;
-    top: 1px;
+  position: relative;
+  top: 1px;
 }
 
 .blankButton {
-    background-color: transparent;
-    border-radius: 7px;
-    border: 0px solid black;
-    display: inline-block;
-    cursor: pointer;
-    color: black;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 8px 20px;
+  background-color: transparent;
+  border-radius: 7px;
+  border: 0px solid black;
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 20px;
 }
 
 .emptyButton {
-    background-color: transparent;
-    border-radius: 7px;
-    border: 0px solid black;
-    display: inline-block;
-    cursor: pointer;
-    color: black;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 8px 20px;
-    height: 30px;
-    width: 700px;
+  background-color: transparent;
+  border-radius: 7px;
+  border: 0px solid black;
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 20px;
+  height: 30px;
+  width: 700px;
 }
 
 .emptyButtonSmall {
-    background-color: transparent;
-    border-radius: 7px;
-    border: 0px solid black;
-    display: inline-block;
-    cursor: pointer;
-    color: black;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 8px 20px;
-    height: 30px;
-    width: 100px;
+  background-color: transparent;
+  border-radius: 7px;
+  border: 0px solid black;
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 20px;
+  height: 30px;
+  width: 100px;
 }
 
 .varButton {
-	background-color:#000000;
-	border-radius:3px;
-	border:1px solid #ffffff;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:23px;
-	padding:16px 20px;
-	text-decoration:none;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid var(--greyd);
+  display: inline-block;
+  cursor: pointer;
+  color: #000;
+  font-family: Arial;
+  font-size: 23px;
+  padding: 16px 20px;
+  text-decoration: none;
 }
+
 .varButton:hover {
-	background-color:#183d04;
+  background-color: var(--accent);
 }
+
 .varButton:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
 
 .varButton span {
-    float: right;
+  float: right;
+}
+
+aside p span {
+  padding-left: 20px;
 }

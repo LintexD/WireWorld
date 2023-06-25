@@ -26,6 +26,9 @@
       <li>
         <div class="barbtn" id="reset">Reset</div>
       </li>
+      <li>
+        <div class="barbtn" id="fill">Fill All</div>
+      </li>
       <li class="dropdown" style="width: 150px;">
         <div class="dropbtn">Regeln</div>
         <div class="dropdown-content">
@@ -53,35 +56,27 @@
     <article id="canvas">
       <canvas id="cv"></canvas>
     </article>
-    <aside>
-      <div>
-        <label for="monkey">Tower</label>
-        <select id="monkey">
-          <option value="nullMonkey"></option>
-          <option value="dartMonkey">Dart monkey[100$]</option>
-        </select>
-      </div>
-      <div>
-        <label for="bloon">Bloon</label>
-        <select id="bloon">
-          <option value="nullBloon"> </option>
-          <option value="redBloon">Red bloon - 1$</option>
-        </select>
-      </div>
+    <aside style="padding: 8px;">
+      <p style="font-size: 26px;">Zellstadien:</p>
+      <button id="sel" class="varButton" style="background-color: #fff;">0</button>
+      <span style="font-size: 24px;">Ausgewählt<span/><br>
+        <button id="s0" class="varButton" style="background-color: #fff;">0</button>
+        <span style="font-size: 24px;">Leere Zelle<span/><br>
+      <button id="s1" class="varButton" style="background-color: #00539C;">1</button>
+      <span style="font-size: 24px;">Elektron<span/><br>
+      <button id="s2" class="varButton" style="background-color: #6F9FD8;">2</button>
+      <span style="font-size: 24px;">Restteilchen<span/><br>
+      <button id="s3" class="varButton" style="background-color: #DD4124;">3</button>
+      <span style="font-size: 24px;">Conductor<span/><br>
       <br>
-      <button id="varA" class="varButton">G:<span id="varAVal">10000000</span></button>
-      <button id="varB" class="varButton">s</button>
-      <button id="varC" class="varButton"></button>
-      <button id="varD" class="varButton"></button>
-      <button id="varE" class="varButton"></button>
-      <button id="varF" class="varButton"></button>
-      <button id="varG" class="varButton"></button>
-      <button id="varH" class="varButton"></button>
-      <button id="varI" class="varButton"></button>
-      <button id="varJ" class="varButton"></button>
-      <button id="varK" class="varButton"></button>
-      <button id="varL" class="varButton"></button>
-      <!--<button id="varM" class="varButton">varM</button>-->
+      <p style="font-size: 26px;">Kurzbefehle:</p>
+      <p style="font-size: 24px; width: 320px;">Space - <span>- Start/Stopp</span></p>
+      <p style="font-size: 24px; width: 320px;">S -     <span>- Step</span></p>
+      <p style="font-size: 24px; width: 320px;">F -     <span>- Fill All</span></p>
+      <p style="font-size: 24px; width: 320px;">Q|0 -   <span>- ZS 0</span></p>
+      <p style="font-size: 24px; width: 320px;">1 -     <span>- ZS 1</span></p>
+      <p style="font-size: 24px; width: 320px;">2 -     <span>- ZS 2</span></p>
+      <p style="font-size: 24px; width: 320px;">3 -     <span>- ZS 3</span></p>
     </aside>
   </div>
 
