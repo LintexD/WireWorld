@@ -1,3 +1,43 @@
+//standard resolution
+const sWidth = 1920
+const sHeight = 1080
+//size of the canvas
+const cWidth = 1560
+const cHeight = 975
+
+const canvas = document.querySelector('#canvas-background') as HTMLCanvasElement
+const body = document.querySelector('body') as HTMLBodyElement
+canvas.setAttribute('width', `${cWidth}`)
+canvas.setAttribute('height', `${cHeight}`)
+const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
+
+let pendingUpdate = false;
+function viewportHandler() {
+  if (pendingUpdate) return;
+  pendingUpdate = true;
+  requestAnimationFrame(() => {
+      pendingUpdate = false
+      let scaleFactor : number
+      let widthXOffset : number
+      if (window.innerWidth / window.innerHeight <= 16/9) {
+          scaleFactor = window.innerWidth / sWidth
+          widthXOffset = 0
+      } else {
+          scaleFactor = window.innerHeight / sHeight
+          widthXOffset = (window.innerWidth - sWidth * scaleFactor) / 2
+      }
+      body.style.transform = `scale(${scaleFactor})`
+      body.style.left = `${-(sWidth - scaleFactor * sWidth)/2 + widthXOffset}px`
+      body.style.top = `${-(sHeight - scaleFactor * sHeight)/2}px`
+  })
+}
+viewportHandler()
+window.visualViewport?.addEventListener('scroll', viewportHandler)
+window.visualViewport?.addEventListener('resize', viewportHandler)
+
+
+
+
 function createnArr(n = 0, x = 20, y = 20): number[][] {
   return Array.from({length: x}).map(e => e = Array.from({length: y}).map(ee => ee = n))
 }
