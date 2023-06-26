@@ -36,12 +36,12 @@ const s3 = document.getElementById('s3') as HTMLButtonElement
 
 let pendingUpdate = false;
 let scaleFactor = 1
+let widthXOffset = 0
 function viewportHandler() {
   if (pendingUpdate) return;
   pendingUpdate = true;
   requestAnimationFrame(() => {
     pendingUpdate = false
-    let widthXOffset: number
     if (window.innerWidth / window.innerHeight <= 16 / 9) {
       scaleFactor = window.innerWidth / sWidth
       widthXOffset = 0
@@ -88,7 +88,7 @@ reset.addEventListener('click', () => {
 function fillAll() {arr = createNArr(state, arr.length, arr[0].length); draw(ctx, cWidth, cHeight, arr)}
 filler.addEventListener('click', fillAll)
 function paintEvent(ev) {
-  const posX = Math.floor(ev.pageX / scaleFactor / scale[scaleIdx])
+  const posX = Math.floor((ev.pageX - widthXOffset) / scaleFactor / scale[scaleIdx])
   const posY = Math.floor((ev.pageY / scaleFactor - 105) / scale[scaleIdx])
   //console.log('pos: ', posX, ' ', posY)
   paintArr(posY, posX)
