@@ -1,4 +1,8 @@
 # WireWorld
 Wire Worls with TS
-single HTML is in the final foulder
-should run in your browser
+
+single HTML is in the "final" folder
+
+should run nicely in your browser
+
+code is ugly but I did it basically in one day
