@@ -10,6 +10,7 @@ export function arrFromString(str: string): number[][] {
     for (let i = 0; i < x; i++) {
         for (let j = 0; j < y && j < strs[i].length; j++) {
             arr[i][j] = parseInt(strs[i].at(j) ?? '0')//it's probably not undefined
+            if (arr[i][j] < 0 || arr[i][j] > 3 || Number.isNaN(arr[i][j])) arr[i][j] = 0
         }
     }
     return arr

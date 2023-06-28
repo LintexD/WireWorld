@@ -1,5 +1,5 @@
 import { draw } from "./renderer"
-import { createNArr, update, mapArray } from './wireWorld';
+import { createNArr, update, mapArray, strFromArray, arrFromString } from './wireWorld';
 
 //standard resolution
 const sWidth = 1920
@@ -23,6 +23,8 @@ const speeder = document.querySelector('#speed') as HTMLButtonElement
 const sizer = document.querySelector('#size') as HTMLDivElement
 const reset = document.querySelector('#reset') as HTMLDivElement
 const filler = document.querySelector('#fill') as HTMLDivElement
+const saver = document.querySelector('#save') as HTMLDivElement
+const loader = document.querySelector('#load') as HTMLDivElement
 const canvas = document.querySelector('#cv') as HTMLCanvasElement
 const body = document.querySelector('body') as HTMLBodyElement
 canvas.setAttribute('width', `${cWidth}`)
@@ -87,6 +89,18 @@ reset.addEventListener('click', () => {
 })
 function fillAll() {arr = createNArr(state, arr.length, arr[0].length); draw(ctx, cWidth, cHeight, arr)}
 filler.addEventListener('click', fillAll)
+function save() {
+  navigator.clipboard.writeText(strFromArray(arr)).then(() => {console.log('saved to clipboard')})
+}
+saver.addEventListener('click', save)
+function load() {
+  navigator.clipboard.readText().then((txt) => {
+    arr = mapArray(arrFromString(txt), arr)
+    draw(ctx, cWidth, cHeight, arr)
+    console.log('loaded from clipboard')
+  })
+}
+loader.addEventListener('click', load)
 function paintEvent(ev) {
   const posX = Math.floor((ev.pageX - widthXOffset) / scaleFactor / scale[scaleIdx])
   const posY = Math.floor((ev.pageY / scaleFactor - 105) / scale[scaleIdx])
