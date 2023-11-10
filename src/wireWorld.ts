@@ -1,8 +1,3 @@
-
-/* Steine.W = 1; Steine[1] = 'W'; Steine['W'] = 1;*/
-
-import { Board, SteinT, Vec2 } from "./bausteine"
-
 export function createNArr(n = 0, x = 20, y = 20): number[][] {
     return Array.from({ length: x }).map(e => e = Array.from({ length: y }).map(ee => ee = n))
 }
@@ -39,4 +34,34 @@ export function mapArray(arr: number[][], brr:number[][]) {
     return brr
 }
 
+//0: wall; 1: will be 2; 2:will be 3; 3:will be 1 if 1|2 1 around else stays the same
+function nextNum(x: number, y: number, arr: number[][]): number {
+    let num = arr[x][y]
+    if (num === 0) { } //do nothing
+    else if (num === 1) num = 2
+    else if (num === 2) num = 3
+    else if (num === 3) {
+        let n = 0
+        for (let i = x - 1; i <= x + 1; i++) {
+            for (let j = y - 1; j <= y + 1; j++) {
+                if (arr[(i + arr.length) % arr.length][(j + arr[0].length) % arr[0].length] === 1) n++
+            }
+        }
+        if (n === 1 || n === 2) num = 1
+    } else {
+        console.log("oopsie")
+        num = 0
+    }
+    return num
+}
 
+export function update(arr: number[][], barr?: number[][]): number[][] {
+    barr = barr ?? createNArr(0, arr.length, arr[0].length)
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            let next = nextNum(i, j, arr)
+            barr[i][j] = next
+        }
+    }
+    return barr
+}
