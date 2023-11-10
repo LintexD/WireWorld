@@ -20,7 +20,7 @@ export function draw(ctx: CanvasRenderingContext2D, cW: number, cH: number, arr:
     drawGrid(ctx, cW, cH, arr[0].length, arr.length)
 }
 
-function drawGrid(ctx: CanvasRenderingContext2D, cW: number, cH: number, col: number, row: number): void {
+export function drawGrid(ctx: CanvasRenderingContext2D, cW: number, cH: number, col: number, row: number): void {
     const xS = cH / row
     const yS = cW / col
     ctx.lineWidth = 2
